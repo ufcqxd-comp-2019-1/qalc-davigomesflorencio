@@ -124,7 +124,7 @@ public class Scanner {
                 lexema.append(source.getCurrentChar());
                 source.advance();
             }while(Character.isLetterOrDigit(source.getCurrentChar()));
-            return new FunctionToken(currentLine,lexemeStart,lexema.toString());
+            return new FunctionIdentifierToken(currentLine,lexemeStart,lexema.toString());
         }else if(source.getCurrentChar()=='(' || source.getCurrentChar()==')'){
             //Delimitadores
             StringBuilder lexema = new StringBuilder();
