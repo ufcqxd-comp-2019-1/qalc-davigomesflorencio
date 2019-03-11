@@ -5,6 +5,7 @@ package br.ufc.comp.qalc.frontend.token;
  */
 public class VariableIdentifierToken extends Token {
 
+    protected String NomeVariavel;
     public VariableIdentifierToken(long line, long start, String value) throws IllegalArgumentException {
         super(line, start, value);
     }
@@ -17,6 +18,10 @@ public class VariableIdentifierToken extends Token {
     @Override
     public void interpretAttributes() {
         // TODO Se o lexema ainda existir e ainda não tiver sido interpretado, descartar o `$`.
+        if(stringValue !=null){
+            NomeVariavel=stringValue;
+            stringValue=null;
+        }
     }
 
     @Override
