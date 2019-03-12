@@ -146,6 +146,21 @@ public class Scanner {
             long lexemeStart = source.getCurrentColumn();
             lexema.append(source.getCurrentChar());
             return new SemiToken(currentLine,lexemeStart,lexema.toString());
+        }else if(source.getCurrentChar()=='#'){
+            //ComToken
+            StringBuilder lexema = new StringBuilder();
+            long currentLine = source.getCurrentLine();
+            long lexemeStart = source.getCurrentColumn();
+            do{
+                lexema.append(source.getCurrentChar());
+                source.advance();
+            }while(source.getCurrentChar()!='\n');
+            return new ComToken(currentLine,lexemeStart,lexema.toString());
+        }else if(Character.isWhitespace(source.getCurrentChar())){
+            //WhiteToken
+            long currentLine = source.getCurrentLine();
+            long lexemeStart = source.getCurrentColumn();
+            return new ComToken(currentLine,lexemeStart," ");
         }
 
         // TODO Recuperação de erros.
